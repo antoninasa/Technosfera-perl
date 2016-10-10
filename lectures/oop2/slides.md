@@ -635,24 +635,24 @@ $resident_user->name(); # ???
 ## Множественное наследование: method resolution order
 
 ```
-       Animal
+       Object
          |
-        Pet   Barkable
+       Stream  Cacheable
        /   \   /
-      Cat   Dog
+ InStream   CacheableOutStream
        \   /
-        Lynx
+      IOStream
 ```
 
 ```perl
-Lynx->method();
-# Lynx->Cat->Pet->Animal->Dog->Barkable
+IOStream->method();
+# IOStream InStream Stream Object CacheableOutStream Cacheable
 ```
 
 ```perl
-$self->Barkable::method(@params);
-
 $self->SUPER::method(@params);
+
+$self->Cacheable::method(@params);
 ```
 
 ---
@@ -662,20 +662,20 @@ $self->SUPER::method(@params);
 ## Множественное наследование: method resolution order
 
 ```
-       Animal
+       Object
          |
-        Pet   Barkable
+       Stream  Cacheable
        /   \   /
-      Cat   Dog
+ InStream   CacheableOutStream
        \   /
-        Lynx
+      IOStream
 ```
 
 ```perl
 use mro 'c3';
 
-Lynx->method();
-# Lynx->Cat->Dog->Pet->Animal->Barkable
+IOStream->method();
+# IOStream InStream CacheableOutStream Stream Object Cacheable
 ```
 
 ```perl
@@ -1231,6 +1231,14 @@ $meta = $class->meta;
 * Moo
 * Mo
 * M
+
+---
+
+# ДЗ
+
+https://github.com/Nikolo/Technosfera-perl/
+
+`/homeworks/oop_reducer`
 
 ---
 
